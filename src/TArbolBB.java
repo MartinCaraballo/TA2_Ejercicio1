@@ -32,7 +32,12 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     @Override
     public TElementoAB<T> buscar(Comparable unaEtiqueta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+           TElementoAB<T> result = null;
+           if (raiz == null)
+           {
+               result = raiz.buscar(unaEtiqueta);
+           }
+           return result;   
     }
     
     public int getLongitud() {
