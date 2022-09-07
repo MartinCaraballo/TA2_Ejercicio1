@@ -10,7 +10,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        TElementoAB<Integer> elemento = new TElementoAB(10, 10);
+        /*TElementoAB<Integer> elemento = new TElementoAB(10, 10);
         TElementoAB<Integer> elemento2 = new TElementoAB(2, 2);
         TElementoAB<Integer> elemento3 = new TElementoAB(15, 15);
         TElementoAB<Integer> elemento4 = new TElementoAB(1, 1);
@@ -23,7 +23,7 @@ public class Main {
         arbolBusqueda.insertar(elemento4);
         arbolBusqueda.insertar(elemento5);
         arbolBusqueda.insertar(elemento6);
-        System.out.println("");
+        System.out.println("");*/
         //System.out.println(arbolBusqueda.getLongitud());
          /*
         String[] claves = ManejadorArchivosGenerico.leerArchivo("src/claves1.txt");
@@ -37,7 +37,16 @@ public class Main {
             salida[i] = lineaAAgregar;
         }*/
         //ManejadorArchivosGenerico.escribirArchivo("src/salida.txt", salida);
-        System.out.println(arbolBusqueda.preOrden());
+        //System.out.println(arbolBusqueda.preOrden());
+        
+        TArbolBB<String> arbolBusqueda = new TArbolBB<>();
+        String[] consultas = ManejadorArchivosGenerico.leerArchivo("src/consultaPrueba.txt");
+        String[] salidaConsultas = new String[consultas.length];
+        for (int i = 0; i < consultas.length; i++) {
+            String consulta = consultas[i];
+            TElementoAB<String> elemento = new TElementoAB(consulta, consulta);
+            arbolBusqueda.insertar(elemento);
+        }
 
     }
 
