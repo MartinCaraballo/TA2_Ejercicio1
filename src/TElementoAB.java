@@ -48,12 +48,36 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public boolean insertar(TElementoAB<T> elemento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (elemento.getEtiqueta().compareTo(etiqueta) < 0) {
+            if (hijoIzq != null) {
+                return getHijoIzq().insertar(elemento);
+            } else {
+                hijoIzq = elemento;
+                return true;
+            }
+        } else if (elemento.getEtiqueta().compareTo(etiqueta) > 0) {
+            if (hijoDer != null) {
+                return getHijoDer().insertar(elemento);
+            } else {
+                hijoDer = elemento;
+                return true;
+            }
+        } else {
+            // ya existe un elemento con la misma etiqueta.-
+            return false;
+        }
     }
 
     @Override
     public String preOrden() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String aux = etiqueta.toString();
+        if(hijoIzq != null) {
+            aux += ", " + hijoIzq.preOrden();
+        }
+        if (hijoDer != null) {
+            aux += ", " + hijoDer.preOrden();
+        }
+        return aux;
     }
 
     @Override

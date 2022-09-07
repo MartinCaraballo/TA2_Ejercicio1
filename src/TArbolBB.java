@@ -2,6 +2,7 @@
 public class TArbolBB<T> implements IArbolBB<T> {
 
     private TElementoAB<T> raiz;
+    private int longitud;
 
     /**
      * Separador utilizado entre elemento y elemento al imprimir la lista
@@ -10,21 +11,41 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     public TArbolBB() {
         raiz = null;
+        longitud = 0;
     }
 
     @Override
     public boolean insertar(TElementoAB<T> unElemento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (raiz == null) {
+            raiz = unElemento;
+            longitud++;
+            return true;
+        }
+        else {
+            if (raiz.insertar(unElemento)) {
+                longitud++;
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public TElementoAB<T> buscar(Comparable unaEtiqueta) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public int getLongitud() {
+        return longitud;
+    }
 
     @Override
     public String preOrden() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (raiz == null) {
+            return "No hay elementos.";
+        } else {
+            return raiz.preOrden();
+        }
     }
 
     @Override
@@ -41,5 +62,4 @@ public class TArbolBB<T> implements IArbolBB<T> {
     public void eliminar(Comparable unaEtiqueta) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }
